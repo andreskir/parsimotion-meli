@@ -1,0 +1,14 @@
+{
+  "name": "widget-factory-api",
+  "description": "API for widgets.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "mongoose": "latest",
+    "coffee-script": "latest",
+    "express": "3.x"
+  },
+  "scripts": {
+    "start": "coffee -w app.coffee"
+  }
+}
