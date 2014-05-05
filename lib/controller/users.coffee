@@ -28,11 +28,3 @@ exports.create = (req, res) ->
   User.findByIdAndUpdate user._id, document, {upsert: true}, (err, resource) ->
     return res.send(500, { error: err }) if err?
     res.send(toDto resource)
-
-exports.delete = (req, res) ->
-  User.findByIdAndRemove req.params.id, (err, resource) ->
-    return res.send(500, { error: err }) if err?
-    if resource?
-      res.send(200)
-    else
-      res.send(404)

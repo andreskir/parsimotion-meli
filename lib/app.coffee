@@ -9,7 +9,6 @@ app = express()
 exports.app = app
 
 app.set 'port', config.port
-app.use (basicAuth config.auth.user, config.auth.password)
 app.use bodyParser()
 
 mongoose.connect config.mongodb.uri, {}, (err) ->
@@ -19,21 +18,22 @@ mongoose.connect config.mongodb.uri, {}, (err) ->
 # -
 # Routes
 # -
+authMiddleware = basicAuth config.auth.user, config.auth.password
+
 app.get '/', (req, res) ->
   res.send 'Hello, Zaiste!'
 
 require './model/user'
 users = require './controller/users'
-app.post    '/users',       users.create
-app.get     '/users',       users.retrieve
-app.get     '/users/:id',   users.retrieve
-app.delete  '/users/:id',   users.delete
+app.post    '/users', authMiddleware, users.create
+app.get     '/users', authMiddleware, users.retrieve
+app.get     '/users/:id', authMiddleware, users.retrieve
 
 require './model/notification'
 notifications = require './controller/notifications'
-app.post    '/notifications',       notifications.push
-app.get     '/notifications',       notifications.retrieve
-app.get     '/notifications/:id',   notifications.retrieve
+app.post    '/notifications', notifications.push
+app.get     '/notifications', authMiddleware, notifications.retrieve
+app.get     '/notifications/:id', authMiddleware, notifications.retrieve
 
 app.listen app.get('port'), () ->
   console.log "listening on port #{app.get('port')}"

@@ -8,5 +8,5 @@ module.exports =
     uri: process.env.PARSIMOTION_API_URL  
 
   auth:
-    user: process.env.USER
-    password: process.env.PASSWORD
+    user: process.env.USER or "admin"
+    password: process.env.PASSWORD or "admin"
