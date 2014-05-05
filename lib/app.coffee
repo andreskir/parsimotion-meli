@@ -2,12 +2,14 @@ express = require 'express'
 mongoose = require 'mongoose'
 bodyParser = require 'body-parser'
 config = require "./config"
+basicAuth = require 'basic-auth-connect'
 
 app = express()
 
 exports.app = app
 
 app.set 'port', config.port
+app.use (basicAuth 'parsimotion', 'Parsi2014')
 app.use bodyParser()
 
 mongoose.connect config.mongodb.uri, {}, (err) ->
