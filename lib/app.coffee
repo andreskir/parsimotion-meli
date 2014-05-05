@@ -4,6 +4,8 @@ bodyParser = require 'body-parser'
 
 app = express()
 
+exports.app = app
+
 app.set 'port', process.env.PORT or 4000
 app.set 'storage-uri', process.env.MONGOHQ_URL or 'mongodb://localhost/widgets'
 app.use bodyParser()
