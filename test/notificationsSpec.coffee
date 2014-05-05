@@ -4,7 +4,6 @@ app = require("../lib/app").app
 
 describe "POST /notifications", ->
   agent = request.agent app
-  restler.postJSON = (url) -> console.log url
 
   describe "should return 200", ->
     it "and the error reason when an error occurs", (done) ->
