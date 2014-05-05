@@ -1,17 +1,16 @@
 express = require 'express'
 mongoose = require 'mongoose'
 bodyParser = require 'body-parser'
+config = require "./config"
 
 app = express()
 
 exports.app = app
 
-app.set 'port', process.env.PORT or 4000
-app.set 'storage-uri', process.env.MONGOHQ_URL or 'mongodb://localhost/widgets'
-app.set 'parsimotion-api-uri', process.env.PARSIMOTION_API_URL
+app.set 'port', config.port
 app.use bodyParser()
 
-mongoose.connect app.get('storage-uri'), {}, (err) ->
+mongoose.connect config.mongodb.uri, {}, (err) ->
   console.log "Mongoose - connection error: " + err if err?
   console.log "Mongoose - connection OK"
 
