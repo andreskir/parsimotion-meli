@@ -25,7 +25,6 @@ users = require './controller/users'
 app.post    '/users',       users.create
 app.get     '/users',       users.retrieve
 app.get     '/users/:id',   users.retrieve
-app.put     '/users/:id',   users.update
 app.delete  '/users/:id',   users.delete
 
 require './model/notification'
