@@ -9,7 +9,7 @@ app = express()
 exports.app = app
 
 app.set 'port', config.port
-app.use (basicAuth 'parsimotion', 'Parsi2014')
+app.use (basicAuth config.auth.user, config.auth.password)
 app.use bodyParser()
 
 mongoose.connect config.mongodb.uri, {}, (err) ->
