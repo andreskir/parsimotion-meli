@@ -8,6 +8,7 @@ exports.app = app
 
 app.set 'port', process.env.PORT or 4000
 app.set 'storage-uri', process.env.MONGOHQ_URL or 'mongodb://localhost/widgets'
+app.set 'parsimotion-api-uri', process.env.PARSIMOTION_API_URL
 app.use bodyParser()
 
 mongoose.connect app.get('storage-uri'), {}, (err) ->

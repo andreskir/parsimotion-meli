@@ -1,4 +1,5 @@
 restler = require 'restler'
+app = require("../app").app
 
 exports.notify = (notification, accessToken) ->
-    restler.postJson "http://staging--api-parsimotion-com-f7ilnpcypkb8.runscope.net/meli/importer#{notification.resource}", notification, accessToken: accessToken
+    restler.postJson "#{app.get 'parsimotion-api-uri'}/meli/importer#{notification.resource}", notification, accessToken: accessToken
