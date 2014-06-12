@@ -9,7 +9,8 @@
     "express": "~4.1.1",
     "restler": "~3.2.2",
     "body-parser": "~1.0.2",
-    "basic-auth-connect": "~1.0.0"
+    "basic-auth-connect": "~1.0.0",
+    "azure": "~0.9.8"
   },
   "scripts": {
     "start": "coffee -w lib/app.coffee",

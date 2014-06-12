@@ -20,6 +20,9 @@ mongoose.connect config.mongodb.uri, {}, (err) ->
 # -
 authMiddleware = basicAuth config.auth.user, config.auth.password
 
+console.log config.auth.user
+console.log config.auth.password
+
 app.get '/', (req, res) ->
   res.send 'Hello, Zaiste!'
 
